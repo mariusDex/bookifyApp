@@ -1,0 +1,14 @@
+BASE DE DATOS ONLINE : 
+
+Host: 			 sql7.freemysqlhosting.net
+Database name:           sql7605547
+Database user:           sql7605547
+Database password:       ndB5snG1cT
+Port number:             3306
+
+
+https://www.freemysqlhosting.net/account/ 
+https://www.phpmyadmin.co/   -----> php my admin
+
+
+

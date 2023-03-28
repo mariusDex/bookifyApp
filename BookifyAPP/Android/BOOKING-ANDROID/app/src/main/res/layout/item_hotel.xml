@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_marginBottom="30dp">
+
+    <ImageView
+        android:id="@+id/hotel_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="260dp"
+        android:contentDescription="keloke"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:background="@drawable/recycler_background">
+        <TextView
+            android:id="@+id/hotel_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginRight="100dp"
+                android:text="City">
+            </TextView>
+
+            <TextView
+                android:id="@+id/hotel_city"
+                android:layout_width="match_parent"
+                android:textSize="16sp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="end"
+                >
+            </TextView>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginRight="100dp"
+                android:text="Country">
+            </TextView>
+
+            <TextView
+                android:id="@+id/hotel_country"
+                android:layout_width="match_parent"
+                android:textSize="16sp"
+                android:gravity="end"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                >
+            </TextView>
+
+        </LinearLayout>
+        
+        <ImageView
+            android:id="@+id/hotel_score"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp">
+        </ImageView>
+
+        <Button
+            android:id="@+id/see_more"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:text="See more >"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/azulito"
+            android:layout_height="wrap_content">
+        </Button>
+        
+        
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,137 @@
+================ TABLE CREATION BOOKING APP ================
+================ Author     : Mariusz Broza ================
+================ Asignatura : Android       ================
+
+CREATE TABLE HOTEL(
+hotel_id INT(5) AUTO_INCREMENT,
+name VARCHAR(50) NOT NULL,
+address VARCHAR(50) NOT NULL,
+city VARCHAR(30) NOT NULL,
+country VARCHAR(30) NOT NULL,
+description VARCHAR(255) NOT NULL,
+score INT(3),
+check_in VARCHAR(40) NOT NULL,
+check_out VARCHAR(40) NOT NULL,
+people_voted INT(5),
+outstanding VARCHAR(1) NOT NULL,
+photo VARCHAR(255),
+CONSTRAINT PK_Hotel PRIMARY KEY(hotel_id)
+);
+
+CREATE TABLE ROOM(
+room_id INT(5) AUTO_INCREMENT,
+price INT(4) NOT NULL,
+hotel_id INT(5) NOT NULL,
+people INT(2),
+room_number INT(3) NOT NULL,
+description VARCHAR(255),
+photo VARCHAR(255),
+CONSTRAINT PK_Room PRIMARY KEY(room_id),
+CONSTRAINT FK_Room_hotel FOREIGN KEY(hotel_id) REFERENCES HOTEL(hotel_id)
+);
+
+CREATE TABLE CLIENT(
+client_id INT(5) AUTO_INCREMENT,
+client_nif VARCHAR(9) NOT NULL,
+email VARCHAR(60) NOT NULL,
+phone VARCHAR(20) NOT NULL,
+name VARCHAR(20) NOT NULL,
+surname VARCHAR(40) NOT NULL,
+birth_date DATE NOT NULL,
+password VARCHAR(20),
+CONSTRAINT PK_Client PRIMARY KEY(client_id),
+CONSTRAINT UQ_Client_nif UNIQUE(client_nif)
+);
+
+CREATE TABLE BOOKING(
+booking_id INT(5) AUTO_INCREMENT,
+client_id INT(5) NOT NULL,
+room_id INT(5) NOT NULL,
+guests INT(2) NOT NULL,
+score INT(3), 
+date DATE NOT NULL,
+entry_date DATE NOT NULL,
+exit_date DATE NOT NULL,
+description VARCHAR(255) NOT NULL,
+CONSTRAINT PK_Booking PRIMARY KEY(booking_id),
+CONSTRAINT FK_Booking_user FOREIGN KEY(client_id) REFERENCES CLIENT(client_id),
+CONSTRAINT FK_Booking_room FOREIGN KEY(room_id) REFERENCES ROOM(room_id)
+);
+
+
+INSERT INTO HOTEL(`name`,`address`,`city`,`country`,`description`,`score`,`check_in`,`check_out`,`people_voted`,`outstanding`,`photo`) 
+VALUES('Hotel Shmula','C/ Bellaqueo Galactic 45','Zaragoza','Spain','Unique hotel with an outstanding arabic theme and views on Ebro River','460','15:00','12:00',6,'N','https://static.hosteltur.com/app/public/uploads/img/articles/2019/11/11/L_135450_sbe.jpg');
+
+INSERT INTO HOTEL(`name`,`address`,`city`,`country`,`description`,`score`,`check_in`,`check_out`,`people_voted`,`outstanding`,`photo`) 
+VALUES('Hotel Vizcaya','Avenida Turrón Amarillo 3','Bilbao','Spain','Fresh hotel for those who want to spend fresh time in the north of Spain','240','15:00','12:00',5,'N','https://images.wallpapersden.com/image/download/las-vegas-night-hotel_Zmxtbm6UmZqaraWkpJRmbmdlrWZlbWU.jpg');
+
+INSERT INTO HOTEL(`name`,`address`,`city`,`country`,`description`,`score`,`check_in`,`check_out`,`people_voted`,`outstanding`,`photo`) 
+VALUES('Hotel Plankton','C/ Crustacio Crujiente 34','Valencia','Spain','Located at Valencia beach, this place provides you with an amazing service and fresh sea air','700','15:00','12:00',7,'Y','https://cf.bstatic.com/xdata/images/hotel/max1024x768/120212532.jpg?k=834bbbaba6481591d1ecb98082628ef879423373f864dd10afaedc5bc87280f5&o=&hp=1');
+
+INSERT INTO HOTEL(`name`,`address`,`city`,`country`,`description`,`score`,`check_in`,`check_out`,`people_voted`,`outstanding`,`photo`) 
+VALUES('Hotel Big Rasta','C/ Mafiosos 2','Culiacán','Mexico','Good vibes hotel , located in the center of Culiacán with big hookah zone','960','16:00','15:00',10,'Y','https://mg.co.za/wp-content/uploads/2022/01/e721f665-the_swimming_pool_ducor_palace_hotel_in_monrovia_liberiacreditmarkfischer-scaled.jpeg');
+
+INSERT INTO ROOM(`price`,`hotel_id`,`people`,`room_number`,`description`,`photo`)
+VALUES (150,1,2,34,'Room with double bed, bathroom, towels, hairdryer, shampoo and a little kitchen.','https://hotelgiraffe.com/_novaimg/galleria/1339742.jpg');
+
+INSERT INTO ROOM(`price`,`hotel_id`,`people`,`room_number`,`description`,`photo`)
+VALUES (260,1,4,260,'Bigger room to spend with friends. Four individual beds, kitchen, full equip. bathroom, and a balcony.','https://www.belvederehoteldublin.com/wp-content/uploads/quad_room.jpg');
+
+INSERT INTO ROOM(`price`,`hotel_id`,`people`,`room_number`,`description`,`photo`)
+VALUES (60,1,1,2,'Room with individual bed, bathroom with full equipment.','https://media.architecturaldigest.com/photos/55f9df9214adf283236d8a35/master/pass/dam-images-daily-2015-04-1-hotel-south-beach-1-hotel-opens-in-south-beach-miami-01.jpg');
+
+INSERT INTO ROOM(`price`,`hotel_id`,`people`,`room_number`,`description`,`photo`)
+VALUES (150,2,2,34,'Room with double bed, bathroom, towels, hairdryer, shampoo and a little kitchen.','https://lh3.googleusercontent.com/yjDoBdvT5hee7GpGXk5fSi43sU0E_4_f2YeopUW99NJODjcMWAHbDWhkLO6KvjwTXvjQwlyRR0gQx2w2CnGfyohY8ETkGVzVwo-O5ti6uk8gaHecDEMA4w4yyiCAHepf29ZGXE8M');
+
+INSERT INTO ROOM(`price`,`hotel_id`,`people`,`room_number`,`description`,`photo`)
+VALUES (260,2,4,260,'Bigger room to spend with friends. Four individual beds, kitchen, full equip. bathroom, and a balcony.','https://www.contemporist.com/wp-content/uploads/2016/06/bunk-beds_190616_05-800x569.jpg');
+
+INSERT INTO ROOM(`price`,`hotel_id`,`people`,`room_number`,`description`,`photo`)
+VALUES (60,2,1,2,'Room with individual bed, bathroom with full equipment.','https://www.hotelmonterey.co.jp/upload_file/monhtyo/stay/sng_600_001.jpg');
+
+INSERT INTO ROOM(`price`,`hotel_id`,`people`,`room_number`,`description`,`photo`)
+VALUES (150,3,2,34,'Room with double bed, bathroom, towels, hairdryer, shampoo and a little kitchen.','https://d3rg18dos0rgue.cloudfront.net/wp-content/uploads/sites/3/2017/12/Deluxe-Double-Guestroom2.jpg');
+
+INSERT INTO ROOM(`price`,`hotel_id`,`people`,`room_number`,`description`,`photo`)
+VALUES (260,3,4,260,'Bigger room to spend with friends. Four individual beds, kitchen, full equip. bathroom, and a balcony.','https://i.pinimg.com/originals/f5/e4/0f/f5e40f6165dec01ce71393fcd14a2380.jpg');
+
+INSERT INTO ROOM(`price`,`hotel_id`,`people`,`room_number`,`description`,`photo`)
+VALUES (60,3,1,2,'Room with individual bed, bathroom with full equipment.','https://media-cdn.tripadvisor.com/media/photo-s/09/9a/60/f5/hotel-station-18.jpg');
+
+INSERT INTO ROOM(`price`,`hotel_id`,`people`,`room_number`,`description`,`photo`)
+VALUES (150,4,2,34,'Room with double bed, bathroom, towels, hairdryer, shampoo and a little kitchen.','https://d3rg18dos0rgue.cloudfront.net/wp-content/uploads/sites/3/2017/12/Deluxe-Double-Guestroom2.jpg');
+
+INSERT INTO ROOM(`price`,`hotel_id`,`people`,`room_number`,`description`,`photo`)
+VALUES (260,4,4,260,'Bigger room to spend with friends. Four individual beds, kitchen, full equip. bathroom, and a balcony.','https://i.pinimg.com/originals/f5/e4/0f/f5e40f6165dec01ce71393fcd14a2380.jpg');
+
+INSERT INTO ROOM(`price`,`hotel_id`,`people`,`room_number`,`description`,`photo`)
+VALUES (60,4,1,2,'Room with individual bed, bathroom with full equipment.','https://media-cdn.tripadvisor.com/media/photo-s/09/9a/60/f5/hotel-station-18.jpg');
+
+INSERT INTO CLIENT(`client_nif`,`email`,`phone`,`name`,`surname`,`birth_date`,`password`)
+VALUES('X9914212H','tipeks456@gmail.com','665096712','test','user','2001-03-25','testUser');
+
+
+
+INSERT INTO BOOKING(client_id,room_id,guests,score,date,entry_date,exit_date,description)
+VALUES(1,1,2,100,curdate(),'2023-04-05','2023-04-06','Booking for room 1 by client 1 for 2 guests from April 1 to April 5 with checkout on April 6');
+
+INSERT INTO BOOKING(client_id,room_id,guests,score,date,entry_date,exit_date,description)
+VALUES(1,2,4,80,curdate(),'2023-04-09','2023-04-10','Booking for room 2 by client 2 for 4 guests from April 7 to April 9 with checkout on April 10');
+
+INSERT INTO BOOKING(client_id,room_id,guests,score,date,entry_date,exit_date,description)
+VALUES(1,3,1,40,curdate(),'2023-04-12','2023-04-13','Booking for room 3 by client 3 for 1 guest from April 11 to April 12 with checkout on April 13');
+
+INSERT INTO BOOKING(client_id,room_id,guests,score,date,entry_date,exit_date,description)
+VALUES(1,2,2,70,curdate(),'2023-04-16','2023-04-18','Booking for room 2 by client 1 for 2 guests from April 15 to April 16 with checkout on April 18');
+
+
+
+
+
+
+
+
+
+
+
+
